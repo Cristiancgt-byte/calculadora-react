@@ -1,14 +1,13 @@
 import logo from './logo.svg';
-import Contador from './componentes/calculadora';
+import Contador from './componentes/calculadora'; // ruta corregida
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          
         </p>
         <a
           className="App-link"
@@ -18,6 +17,8 @@ function App() {
         >
           zucker und kaffee
         </a>
+
+        <Contador />
       </header>
     </div>
   );
