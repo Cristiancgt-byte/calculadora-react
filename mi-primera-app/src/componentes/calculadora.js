@@ -1,60 +1,41 @@
 import React, { useState } from 'react';
 import Botones from './botones';
 
-const Calculadora = () => {
-  const [input, setInput] = useState('');
-  
-  // Función para manejar los clicks de los botones
-  const handleClick = (valor) => {
+function Contador() {
+  const [texto, setTexto] = useState('');
+
+  function clickBoton(valor) {
     if (valor === '=') {
       try {
-        // Evalúa la expresión matemática (con precaución)
-        // eslint-disable-next-line no-eval
-        const resultado = eval(input);
-        setInput(resultado.toString());
-      } catch (error) {
-        setInput('Error');
+        const res = eval(texto);
+        setTexto(res.toString());
+      } catch {
+        setTexto('Error');
       }
     } else {
-      setInput((prev) => prev + valor);
+      setTexto(texto + valor);
     }
-  };
+  }
 
-  // Función para limpiar la pantalla
-  const limpiar = () => setInput('');
+  function limpiar() {
+    setTexto('');
+  }
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <h2>Calculadora</h2>
+      <h2>calculadora</h2>
       <input 
         type="text" 
-        value={input} 
+        value={texto} 
         readOnly 
-        style={{ 
-          width: '300px', 
-          height: '40px', 
-          fontSize: '20px', 
-          marginBottom: '10px',
-          textAlign: 'right',
-          paddingRight: '10px'
-        }} 
+        style={{ width: '300px', height: '40px', fontSize: '20px', marginBottom: '10px', textAlign: 'right' }} 
       />
       <br />
-      <Botones onClick={handleClick} />
+      <Botones onClick={clickBoton} />
       <br />
-      <button 
-        onClick={limpiar} 
-        style={{ 
-          marginTop: '10px', 
-          padding: '10px 20px', 
-          fontSize: '16px', 
-          cursor: 'pointer' 
-        }}
-      >
-        Limpiar
-      </button>
+      <button onClick={limpiar} style={{ padding: '10px 20px', marginTop: '10px' }}>Limpiar</button>
     </div>
   );
-};
+}
 
-export default Calculadora;
+export default Contador;
